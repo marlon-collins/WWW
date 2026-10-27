@@ -36,12 +36,6 @@
             text-decoration: none;
             color: white;
         }
-        .menu  nav li {
-            display: flex;
-            color: white;
-            padding: 10px;
-            text-decoration: none;
-        }
         .menu  ul li {
             display: flex;
             color: white;
@@ -50,8 +44,13 @@
         }
         .menu nav ul li:hover{
             background-color: black;
+            color: white;
         }
-
+        .menu nav li a {
+            text-decoration: none;
+            list-style-type: none;
+            color: solid white;
+        }
 
         /* MAIN */
         main{
