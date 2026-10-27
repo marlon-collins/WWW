@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(65, 60, 60);
+        }
+        header{
+            background-color: rgb(77, 75, 75);
+        }
+
+        /* MENU BARRA SUPERIOR*/
+        .barra-superior{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 70px;
+            justify-content: flex-start;
+            border: 3px solid black;
+        }
+        .logo{
+            width: 100px;
+            height: auto;
+            border: 3px solid blue;
+            border-radius: 80px;
+            background-color: rgb(247, 244, 244);            
+        }
+        .menu nav ul{
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            margin: 10px;
+            padding: 10px;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+        .menu  nav li {
+            display: flex;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .menu  ul li {
+            display: flex;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .menu nav ul li:hover{
+            background-color: black;
+        }
+
+
+        /* MAIN */
+        main{
+            width:100%;
+            min-height: 700px;
+            background-color: rgb(206, 196, 196);
+            display: flex;
+            flex-direction: column;
+            border: 3px solid black;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-description{
+            margin-top: 30px;
+            display: flex;
+            flex-direction: row;            
+            padding: 0;
+            background-color: black;
+            width: 750px;
+            height: 400px;
+        }
+        .capa-filme{
+            width: 450px;
+            height: auto;
+            display: flex;
+            background-color: bisque;
+            border: 3px solid black;
+        }
+        .description{
+            width: 300px;
+            height: auto;
+            background-color:blanchedalmond ;
+            border: 3px solid rgb(36, 35, 35);
+            display: flex;
+            flex-direction: column;
+        }
+        .description ul{
+            list-style-type: none;
+            color: rgb(14, 13, 13);
+            align-items: flex-start;
+            text-decoration: black;
+            
+        }
+        .description ul li {
+            list-style-type: none;
+            color: rgb(22, 21, 21);            
+        }
+
+
+
+
+        /* FOOTER */
+        footer{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            background-color: rgb(37, 37, 37);
+            border: 3px solid black;
+            color: white;
+            display: block;
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="barra-superior">
+            <div class="logo"> </div>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li> <a href=""> HOME </a>  </li>
+                        <li> <a href=""> SOBRE </a> </li>
+                        <li> <a href=""> CONTATO </a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="card-description">
+            <div class="capa-filme"> <img src="" alt=""></div>
+            <div class="description">
+                <ul>
+                    <li> <span>Titulo: </span> </li>
+                    <li> <span>Genero: </span> </li>
+                    <li> <span>Elenco: </span> </li>
+                    <li> <span>Direçao: </span> </li>
+                    <li> <span>Ano: </span> </li>
+                    <li> <span>Duração :</span> </li>
+                </ul>
+            </div>
+
+        </div>       
+    </main>
+
+    <footer>
+        <div>
+            
+        </div>
+    </footer>
+</body>
+</html>
