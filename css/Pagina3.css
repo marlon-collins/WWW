@@ -46,10 +46,13 @@
             background-color: black;
             color: white;
         }
-        .menu nav li a {
+        .menu nav li a{
             text-decoration: none;
             list-style-type: none;
             color: solid white;
+        }
+        .menu nav ul,li,a{
+            color: white;
         }
 
 
