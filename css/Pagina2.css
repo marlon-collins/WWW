@@ -1,61 +1,3 @@
-*{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body{
-        background-color: rgb(65, 60, 60);
-    }
-    header{
-        background-color: rgb(77, 75, 75);
-    }
-
-    /* MENU BARRA SUPERIOR*/
-    .barra-superior{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 70px;
-        justify-content: flex-start;
-        border: 3px solid black;
-    }
-    .logo{
-        width: 100px;
-        height: auto;
-        border: 3px solid blue;
-        border-radius: 80px;
-        background-color: rgb(247, 244, 244);            
-    }
-    .menu nav ul{
-        display: flex;
-        flex-direction: row;
-        list-style: none;
-        margin: 10px;
-        padding: 10px;
-        align-items: center;
-        text-decoration: none;
-        color: white;
-    }
-    .menu  ul li {
-        display: flex;
-        color: white;
-        padding: 10px;
-        text-decoration: none;
-    }
-    .menu nav ul li:hover{
-        background-color: black;
-        color: white;
-    }
-    .menu nav li a{
-        text-decoration: none;
-        list-style-type: none;
-        color: solid white;
-    }
-    .menu nav ul,li,a{
-    color: white;
-    }
-
-
     /* MAIN */
     main{
         width:100%;
@@ -79,10 +21,8 @@
     .container-cards{
         display: flex;
         flex-direction: row;
-        justify-content:space-between;
+        justify-content:space-around;
         align-items: center;
-        /* background-color: gray;
-        border: 3px solid rgb(211, 159, 47); */
         min-width: 960px;
         height: auto;
         margin: 10px;
@@ -90,29 +30,17 @@
         gap: 10px;
     }
     .container-cards div{
-        width: 100px;
-        height: 100px;
-        background-color: blanchedalmond;
+        width: 300px;
+        height: 300px;
         color: rgb(14, 13, 13);
         border: 3px solid rgb(8, 8, 8);
         border-radius: 5px;
-        align-items: center;
-        font-size: large;
+        overflow: hidden;
+        object-fit: contain;
     }
 
-
-
-
-
-    /* FOOTER */
-    footer{
-        position: fixed;
-        bottom: 0;
+    .container-cards img{
         width: 100%;
-        height: 200px;
-        background-color: rgb(37, 37, 37);
-        border: 3px solid black;
-        color: white;
+        height: auto;
         display: block;
-        flex-direction: column;
     }

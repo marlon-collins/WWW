@@ -26,7 +26,14 @@
             border-radius: 80px;
             background-color: rgb(247, 244, 244);            
         }
-        .menu nav ul{
+        .menu {
+            display: flex;
+            flex-direction: row;
+            margin: 0px;
+            padding: 0px;
+            gap: 10px;
+        }
+        .menu ul{
             display: flex;
             flex-direction: row;
             list-style: none;
@@ -34,22 +41,22 @@
             padding: 10px;
             align-items: center;
         }
-        .menu nav li{
+        .menu li{
             display: flex;
             color: white;
             padding: 10px;
         }
-        .menu nav ul li:hover{
+        .menu li:hover{
             background-color: black;
             color: white;
         }
-        .menu nav li a{
+        .menu li a{
             text-decoration: none;
             list-style-type: none;
             color: solid white;
         }
 
-        .menu nav ul,li,a{
+        .menu ul,li,a{
             color: white;
         }
         /* MAIN */
