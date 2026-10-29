@@ -13,13 +13,11 @@
         .card-description{
             margin-top: 30px;
             display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;            
+            flex-direction: row;           
             padding: 0;
             background-color: black;
             width: 750px;
             height: 400px;
-            gap: 10px;
         }
         
         .capa-filme{
@@ -27,14 +25,16 @@
             height: auto;
             display: flex;
             background-color: bisque;
-            border: 3px solid black;
+            border: 3px solid rgb(10, 10, 10);
+            /* overflow: hidden; */
+            
         }
         .capa-filme img{
             width: 100%;
             height: auto;
         }
         .description{
-            width: 300px;
+            width: 330px;
             height: auto;
             background-color:blanchedalmond ;
             border: 3px solid rgb(36, 35, 35);
