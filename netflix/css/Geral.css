@@ -86,6 +86,9 @@
     }
     /* MAIN */
     main{
+        flex: 1;
+        box-sizing: border-box;
+        padding-bottom: 50vh; /* SEPARA 50% DO FOOTER E DEIXA SEMPRE ESSA DISTANCIA NÃO IMPORTA O QUANTO TENHA DE CONTEUDO , PX não dá muito certo*/
         width:100%;
         min-height: 700px;
         background-color: rgb(206, 196, 196);

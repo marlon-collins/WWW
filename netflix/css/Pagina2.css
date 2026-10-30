@@ -1,5 +1,7 @@
     /* MAIN */
     main{
+        flex: 1;
+        box-sizing: border-box;
         width:100%;
         min-height: 700px;
         background-color: rgb(206, 196, 196);

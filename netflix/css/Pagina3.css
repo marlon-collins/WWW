@@ -1,5 +1,7 @@
      /* MAIN */
         main{
+            flex: 1;
+            box-sizing: border-box;
             width:100%;
             min-height: 700px;
             background-color: rgb(206, 196, 196);
@@ -9,7 +11,12 @@
             align-items: center;
             gap: 10px;
         }
-
+        #Filme-Descricao{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        
         .card-description{
             margin-top: 30px;
             display: flex;
@@ -18,14 +25,21 @@
             background-color: black;
             width: 750px;
             height: 400px;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
+        .card-description:target{
+            border: 15px solid rgb(116, 66, 233);
+            box-shadow: rgb(230, 223, 231);
+
+        }
+
         
         .capa-filme{
-            width: 450px;
+            width: 445px;
             height: auto;
             display: flex;
-            background-color: bisque;
-            border: 3px solid rgb(10, 10, 10);
+            background-color: rgb(238, 230, 232);
+            border: 3px solid rgb(5, 8, 14);
             /* overflow: hidden; */
             
         }
@@ -50,6 +64,9 @@
         }
         .description ul li {
             list-style-type: none;
-            color: rgb(22, 21, 21);            
+            color: rgb(22, 21, 21);  
+            align-items: center;
+            margin: 10px;
+            padding: 10px;          
         }
 
