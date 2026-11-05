@@ -5,7 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../css/Geral.css">
+    <style>
 
+
+        .conteudo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #Banner {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+            background-color: #333;
+            overflow: auto;
+            white-space: nowrap;
+            padding: 10px;
+        }
+
+        #Banner img {
+            width: 100%;
+            height: auto;
+            padding: 10px;
+        }
+
+        .Bloco-scroll {
+            width: 100%;
+            background-color: #333;
+            overflow: auto;
+            white-space: nowrap;
+            padding: 10px;
+        }
+
+        .Bloco-scroll img {
+            width: 200px;
+            height: auto;
+            border-radius: 7px;
+            padding: 10px;
+        }
+
+        .Bloco-scroll img:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(240, 89, 19, 0.541);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,10 +68,58 @@
         </div>
     </header>
 
-    <main class="conteudo">
+    <main>
+
         <div class="conteudo">
             
+            
+            <div id="Banners">
+                <divm class="slideshow-container">
+                    <div> <div class="numbertext"> 1/5</div><img src="https://a Storyblok.com/f/178900/1127x634/6b76ded859/95f57be997f587269d12015b9e9600a51660135089_main.png/m/filters:quality(95)format(webp)" alt="dragon-ball-classico"> <div class="text">Dragon Ball Classico</div> </div>
+                    <div> <div class="numbertext"> 2/5</div> <img src="https://sm.ign.com/t/ign_br/screenshot/default/dragon-ball-z-gt-super-guia-de-sagas-e-episodios_f2zv.960.jpg" alt="dragonball"> <div class="text">Dragon Ball Z GT</div> </div>
+                    <div> <div class="numbertext"> 3/5</div> <img src="https://a Storyblok.com/f/178900/960x540/4e97fe2b93/dragon-ball-z.jpe/m/filters:quality(95)format(webp)" alt="goku-z"> <div class="text">Dragon Ball Z</div> </div>
+                    <div> <div class="numbertext"> 4/5</div> <img src="https://a Storyblok.com/f/178900/1920x1008/0334180e36/dragon-ball-daima-key-visual-wide.png/m/filters:quality(95)format(webp)" alt="dragonball-daima"> <div class="text">Dragon Ball Daima</div> </div>
+                    <div> <div class="numbertext"> 5/5</div> <img src="https://a.storyblok.com/f/178900/940x528/0e0becbfe5/dragonballgt_16x9.jpg/m/filters:quality(95)format(webp)" alt="dragonball-gt"> <div class="text">Dragon Ball GT</div> </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+
+            </div>
+
+            <div class="Bloco-scroll">
+                <img src="https://media.fstatic.com/aD9RFVd527j9y8L01sVSpA8DLZc=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_03.jpg" alt="Dragon Ball 3: Uma Aventura Mística">
+                <img src="https://media.fstatic.com/8ABdp8hQQzQu0nWmNGblQFi-Dn8=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_02.jpg" alt="Dragon Ball 2: A Bela Adormecida do Castelo Amaldiçoado">
+                <img src="https://media.fstatic.com/s02c1aJTmoGCXv9xL_cm2C5Sa98=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_17.jpeg" alt="Dragon Ball 4: A Caminho do Poder">
+                <img src="https://media.fstatic.com/LtSLAzFaA8iFIXTRNWceBWR9GGs=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_04.jpg" alt="Dragon Ball Z 1: Devolva-me Gohan!">
+                <img src="https://media.fstatic.com/vUAgF6x57T5vpaWZFV75ANIlIj4=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_05.jpg" alt="Dragon Ball Z 2: O Homem Mais Forte do Mundo">
+                <img src="https://media.fstatic.com/ysPhlV9bqnATRGSpfZIiyYl-2ao=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_06.jpg" alt="Dragon Ball Z 3: A Árvore do Poder">
+                <img src="https://media.fstatic.com/GF6sV_PX0VTsNJqmBXktZWFxPKE=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_07.jpg" alt="Dragon Ball Z 4: Goku, o Super Saiyajin">
+                <img src="https://media.fstatic.com/9tZkIH9cc3rKFcb_mMotN-6YWAw=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_08.jpg" alt="Dragon Ball Z 5: Uma Vingança Para Freeza">
+                <img src="https://media.fstatic.com/kbEGAJGUgRsYic7Lyj7E6S9qlkE=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_10.jpg" alt="Dragon Ball Z 7: O Retorno dos Andróides">
+                <img src="https://media.fstatic.com/Et0-DXG-besSdkHslE3xh5MUbkw=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_11.jpg" alt="Dragon Ball Z 8: O Poder Invencível">
+                <img src="https://media.fstatic.com/Mo_43N7_95GXw_NmeYSN4IhqD_k=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_12.jpg" alt="Dragon Ball Z 9: A Batalha nos Dois Mundos">
+                <img src="https://media.fstatic.com/hajaIMB2AwUN2ofVQuNe1JS2jA0=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_13.jpg" alt="Dragon Ball Z 10: O Retorno do Guerreiro Lendário">
+                <img src="https://media.fstatic.com/DEZBnWRjKWrMDYgGU9Jp2LAgpb0=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/FeZFuv5aAAcU7k_.jpg" alt="Dragon Ball Z 11: O Combate Final, Bio-Broly">
+                <img src="https://media.fstatic.com/EveqUPtDV1MPsu4Qs0VAYCTK0Rk=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_15.jpg" alt="Dragon Ball Z 12: Uma Nova Fusão">
+                <img src="https://media.fstatic.com/pK3Nwp8DvN3Tc6P5lQ9LhbTcFnQ=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/dragon-ball-z-o-ataque-do-dragao.png" alt="Dragon Ball Z 13: O Ataque do Dragão">
+                <img src="https://media.fstatic.com/ts25c364Ida67MKH-eTxWFBUGqY=/220x330/smart/filters:format(webp)/media/movies/covers/2013/08/dragon-ball-z-a-batalha-dos-deuses_t63108.jpg" alt="Dragon Ball Z: A Batalha dos Deuses">
+                <img src="https://media.fstatic.com/qM7-ieGzv6zLw8dBYWoVaD2-Bd0=/220x330/smart/filters:format(webp)/media/movies/covers/2015/06/dragon-ball-z-o-renascimento-de-freeza_t107079.jpg" alt="Dragon Ball Z: O Renascimento de Freeza"> 
+                <img src="https://media.fstatic.com/ET82xQERpLXiToCG5pjB0AC5mso=/220x330/smart/filters:format(webp)/media/movies/covers/2018/07/dragon-ball-super-broly-poster-1.jpg" alt="Dragon Ball Super: Broly">   
+
+            </div>
+
+           
+
+
         </div>
+
     </main>
 
     <footer>
@@ -33,7 +128,32 @@
         </div>
     </footer>
 <script src="../js/script.js">
-    
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
 </script>    
 </body>
 </html>

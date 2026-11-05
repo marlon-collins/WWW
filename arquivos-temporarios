@@ -1,0 +1,94 @@
+                    <img src="https://media.fstatic.com/aD9RFVd527j9y8L01sVSpA8DLZc=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_03.jpg" alt="Dragon Ball 3: Uma Aventura Mística">
+                    <img src="https://media.fstatic.com/8ABdp8hQQzQu0nWmNGblQFi-Dn8=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_02.jpg" alt="Dragon Ball 2: A Bela Adormecida do Castelo Amaldiçoado">
+                    <img src="https://media.fstatic.com/s02c1aJTmoGCXv9xL_cm2C5Sa98=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_17.jpeg" alt="Dragon Ball 4: A Caminho do Poder">
+                    <img src="https://media.fstatic.com/LtSLAzFaA8iFIXTRNWceBWR9GGs=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_04.jpg" alt="Dragon Ball Z 1: Devolva-me Gohan!">
+                    <img src="https://media.fstatic.com/vUAgF6x57T5vpaWZFV75ANIlIj4=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_05.jpg" alt="Dragon Ball Z 2: O Homem Mais Forte do Mundo">
+                    <img src="https://media.fstatic.com/ysPhlV9bqnATRGSpfZIiyYl-2ao=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_06.jpg" alt="Dragon Ball Z 3: A Árvore do Poder">
+                    <img src="https://media.fstatic.com/GF6sV_PX0VTsNJqmBXktZWFxPKE=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_07.jpg" alt="Dragon Ball Z 4: Goku, o Super Saiyajin">
+                    <img src="https://media.fstatic.com/9tZkIH9cc3rKFcb_mMotN-6YWAw=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_08.jpg" alt="Dragon Ball Z 5: Uma Vingança Para Freeza">
+                    <img src="https://media.fstatic.com/kbEGAJGUgRsYic7Lyj7E6S9qlkE=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_10.jpg" alt="Dragon Ball Z 7: O Retorno dos Andróides">
+                    <img src="https://media.fstatic.com/Et0-DXG-besSdkHslE3xh5MUbkw=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_11.jpg" alt="Dragon Ball Z 8: O Poder Invencível">
+                    <img src="https://media.fstatic.com/Mo_43N7_95GXw_NmeYSN4IhqD_k=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_12.jpg" alt="Dragon Ball Z 9: A Batalha nos Dois Mundos">
+                    <img src="https://media.fstatic.com/hajaIMB2AwUN2ofVQuNe1JS2jA0=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_13.jpg" alt="Dragon Ball Z 10: O Retorno do Guerreiro Lendário">
+                    <img src="https://media.fstatic.com/DEZBnWRjKWrMDYgGU9Jp2LAgpb0=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/FeZFuv5aAAcU7k_.jpg" alt="Dragon Ball Z 11: O Combate Final, Bio-Broly">
+                    <img src="https://media.fstatic.com/EveqUPtDV1MPsu4Qs0VAYCTK0Rk=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_15.jpg" alt="Dragon Ball Z 12: Uma Nova Fusão">
+                    <img src="https://media.fstatic.com/pK3Nwp8DvN3Tc6P5lQ9LhbTcFnQ=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/dragon-ball-z-o-ataque-do-dragao.png" alt="Dragon Ball Z 13: O Ataque do Dragão">
+                    <img src="https://media.fstatic.com/ts25c364Ida67MKH-eTxWFBUGqY=/220x330/smart/filters:format(webp)/media/movies/covers/2013/08/dragon-ball-z-a-batalha-dos-deuses_t63108.jpg" alt="Dragon Ball Z: A Batalha dos Deuses">
+                    <img src="https://media.fstatic.com/qM7-ieGzv6zLw8dBYWoVaD2-Bd0=/220x330/smart/filters:format(webp)/media/movies/covers/2015/06/dragon-ball-z-o-renascimento-de-freeza_t107079.jpg" alt="Dragon Ball Z: O Renascimento de Freeza"> 
+                    <img src="https://media.fstatic.com/ET82xQERpLXiToCG5pjB0AC5mso=/220x330/smart/filters:format(webp)/media/movies/covers/2018/07/dragon-ball-super-broly-poster-1.jpg" alt="Dragon Ball Super: Broly"> 
+
+
+
+                    
+Conversa com Gêmeos
+gemini to atualizando meu projeto poderia me falar mais sobre esse padrão aqui do javascript
+
+"showSlides" está aparecendo com um cor de método peguei um tutorial da w3schools
+
+O showSlidesestá aparecendo com cor de método/função no seu editor de código porque ele é uma função declarada no próprio script.   
+imagem_712103.png
+
+Abaixo está a explicação detalhada de como esse padrão (o famoso carrossel/slideshow da W3Schools) funciona e o motivo de ele ser chamado antes de sua declaração no código:
+
+1. Por que o showSlidespode ser chamado antes de aparecer no código?
+No topo do seu código, na linha showSlides(slideIndex);, a função é chamada. Mesmo que a declaração function showSlides(n) { ... }esteja mais abaixo, o JavaScript utiliza um comportamento chamado Hoisting (Içamento).   
+imagem_712103.png
++ 1
+
+Funções declaradas com a palavra-chave functionsão elevadas para o topo do escopo na fase de construção do JavaScript.   
+imagem_712103.png
+
+Por isso, você consegue executar a função antes mesmo da linha onde ela foi escrita.   
+imagem_712103.png
+
+2. O que cada parte desse faz padrão?
+A. Estado Global ( slideIndex)
+let slideIndex = 1;: Mantém o controle de qual slide está visível no momento (começando no primeiro).   
+imagem_712103.png
+
+B. Funções de Controle ( plusSlidese currentSlide)
+plusSlides(n): Usado nos botões de "Anterior" e "Próximo". Ela aumenta ou diminui o slideIndex(ex: +1ou -1) e chama a showSlidespara atualizar a tela.   
+imagem_712103.png
++ 1
+
+currentSlide(n): Usado ao clicar nos pontos/indicadores na parte inferior. Ela atribuiu diretamente o número do slide clicado aoslideIndex.   
+imagem_712103.png
++ 1
+
+C. A Função Principal ( showSlides)
+A showSlides(n)gerencia a lógica visual:   
+imagem_712103.png
+
+Seleção dos elementos: Busca todas as imagens/slides ( getElementsByClassName("mySlides")) e os pontos ( getElementsByClassName("dot")).   
+imagem_712103.png
+
+Tratamento de limites (Loop):
+
+Se o número do slide passar do total ( n > slides.length), volta para o 1.   
+imagem_712103.png
+
+Se for menor que 1 ( n < 1), vai para o último slide ( slides.length).   
+imagem_712103.png
+
+Redefinir visual:
+
+Um laço forocultando todos os slides definindodisplay = "none".   
+imagem_712103.png
+
+Outro laço forremove a classe "active"de todos os pontos indicadores.   
+imagem_712103.png
+
+Exibição do slide ativo:
+
+Define o slide atual para display = "block"(como os arrays em JS começam no índice 0, usa-se slideIndex - 1).   
+imagem_712103.png
+
+Adicionada a classe "active"no ponto correspondente para destacá-lo.   
+imagem_712103.png
+
+
+
+
+
+Seus chats do CONSELHO FEDERAL DE FISIOT E TERAPIA OCUPACIONAL não são usados ​​para aprimorar nossos modelos. Gemini é uma IA e pode cometer erros.Sua privacidade e GeminiAbre em uma nova janela
+
