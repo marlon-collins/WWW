@@ -1,10 +1,13 @@
 
 
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx criar menu xxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
 let menus = [
-    {nome: "home", link:"./home.html"},
-    {nome: "filmes", link:"./filmes.html"},
-    {nome: "descrição", link:"./descricao.html"}
+    {nome: "Home", link:"./home.html"},
+    {nome: "Filmes", link:"./filmes.html"},
+    {nome: "Animes", link:"./animes.html"},
+    {nome: "Series", link:"./series.html"},
+    {nome: "Descrição", link:"./descricao.html"}
 ]
 
 function criarMenu() {
@@ -24,8 +27,67 @@ function criarMenu() {
 
 criarMenu();
 
-/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx criar menu xxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx criar menu Genero xxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
+let menuGenero = [
+    {genero:"Ação", link:'href="#Acao"'},
+    {genero:"Comédia", link:'href="#Comedia"'},
+    {genero:"Drama", link:'href="#Drama"'},
+    {genero:"Ficção Cientifica", link:'href="#Ficcao-Cientifica"'},
+    {genero:"Terror/Horror", link:'href="#Terror-Horror"'},
+    {genero:"Suspense", link:'href="#Suspense"'},
+    {genero:"Romance", link:'href=""'}
+]
+
+function criarMenuGenero() {
+
+    let elemento2 = document.getElementById("Genero-menu");
+
+    let lista2 =  "";
+
+    for(index=0; index < menuGenero.length; index = index + 1){
+
+       lista2 = lista2 +   `<li class= "active"><a href="./`+ menuGenero[index].link +`">`+ menuGenero[index].genero + `</a></li>`;
+
+    };
+    elemento2.innerHTML =lista2;
+   
+}
+
+criarMenuGenero();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*xxxxxxxxxxxxxxxxxxxxxxxxxx BLOCO DE FILMES xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 let filmes = [
     {id:"duna", link_img: "../Img/duna.png",nome:"Duna parte 2",link_pagina:"./descricao.html#duna"},
 
@@ -130,3 +192,37 @@ function chamaDescricao() {
     }
 }
 chamaDescricao();
+
+
+///////// BANNER /////////
+
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+}
+    

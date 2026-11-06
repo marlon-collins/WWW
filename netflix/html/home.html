@@ -5,54 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../css/Geral.css">
-    <style>
-
-
-        .conteudo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        #Banner {
-            width: 100%;
-            max-width: 800px;
-            margin-bottom: 20px;
-            background-color: #333;
-            overflow: auto;
-            white-space: nowrap;
-            padding: 10px;
-        }
-
-        #Banner img {
-            width: 100%;
-            height: auto;
-            padding: 10px;
-        }
-
-        .Bloco-scroll {
-            width: 100%;
-            background-color: #333;
-            overflow: auto;
-            white-space: nowrap;
-            padding: 10px;
-        }
-
-        .Bloco-scroll img {
-            width: 200px;
-            height: auto;
-            border-radius: 7px;
-            padding: 10px;
-        }
-
-        .Bloco-scroll img:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(240, 89, 19, 0.541);
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -70,18 +25,20 @@
 
     <main>
 
-        <div class="conteudo">
+        <div class="conteudo1">
             
             
             <div id="Banners">
-                <divm class="slideshow-container">
-                    <div> <div class="numbertext"> 1/5</div><img src="https://a Storyblok.com/f/178900/1127x634/6b76ded859/95f57be997f587269d12015b9e9600a51660135089_main.png/m/filters:quality(95)format(webp)" alt="dragon-ball-classico"> <div class="text">Dragon Ball Classico</div> </div>
-                    <div> <div class="numbertext"> 2/5</div> <img src="https://sm.ign.com/t/ign_br/screenshot/default/dragon-ball-z-gt-super-guia-de-sagas-e-episodios_f2zv.960.jpg" alt="dragonball"> <div class="text">Dragon Ball Z GT</div> </div>
-                    <div> <div class="numbertext"> 3/5</div> <img src="https://a Storyblok.com/f/178900/960x540/4e97fe2b93/dragon-ball-z.jpe/m/filters:quality(95)format(webp)" alt="goku-z"> <div class="text">Dragon Ball Z</div> </div>
-                    <div> <div class="numbertext"> 4/5</div> <img src="https://a Storyblok.com/f/178900/1920x1008/0334180e36/dragon-ball-daima-key-visual-wide.png/m/filters:quality(95)format(webp)" alt="dragonball-daima"> <div class="text">Dragon Ball Daima</div> </div>
-                    <div> <div class="numbertext"> 5/5</div> <img src="https://a.storyblok.com/f/178900/940x528/0e0becbfe5/dragonballgt_16x9.jpg/m/filters:quality(95)format(webp)" alt="dragonball-gt"> <div class="text">Dragon Ball GT</div> </div>
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <div class="slideshow-container">
+
+                    <div class="mySlides fade"> <div class="numbertext">1 / 3</div> <img src="https://a.Storyblok.com/f/178900/1127x634/6b76ded859/95f57be997f587269d12015b9e9600a51660135089_main.png/m/filters:quality(95)format(webp)" style="width:100%"> <div class="text">Dragon Ball Classico</div> </div>
+                    <div class="mySlides fade"> <div class="numbertext">2 / 5</div> <img src="https://sm.ign.com/t/ign_br/screenshot/default/dragon-ball-z-gt-super-guia-de-sagas-e-episodios_f2zv.960.jpg" style="width:100%"> <div class="text">Dragon Ball Z GT</div> </div>
+                    <div class="mySlides fade"> <div class="numbertext">3 / 5</div> <img src="https://a.Storyblok.com/f/178900/960x540/4e97fe2b93/dragon-ball-z.jpe/m/filters:quality(95)format(webp)" style="width:100%"> <div class="text">Dragon Ball Z</div> </div>
+                    <div class="mySlides fade"> <div class="numbertext">4 / 5</div> <img src="https://a.Storyblok.com/f/178900/1920x1008/0334180e36/dragon-ball-daima-key-visual-wide.png/m/filters:quality(95)format(webp)" style="width:100%"> <div class="text">Dragon Ball Daima</div> </div>
+                    <div class="mySlides fade"> <div class="numbertext">5 / 5</div> <img src="https://i.pinimg.com/736x/da/23/c0/da23c02540f60042f9ff5068f4eaff2f.jpg" style="width:100%"> <div class="text">DRAGON BALL SAGA BUU</div> </div>
+
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 </div>
                 <br>
                 <div style="text-align:center">
@@ -90,8 +47,18 @@
                     <span class="dot" onclick="currentSlide(3)"></span>
                     <span class="dot" onclick="currentSlide(4)"></span>
                     <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
 
-            </div>
+            </div><br>
+
+            <div class="Generos">
+                <nav>
+                    <ul id="Genero-menu">
+                    
+                    </ul>
+                </nav>
+            </div><br>
+
 
             <div class="Bloco-scroll">
                 <img src="https://media.fstatic.com/aD9RFVd527j9y8L01sVSpA8DLZc=/220x330/smart/filters:format(webp)/media/movies/covers/2023/03/movie_03.jpg" alt="Dragon Ball 3: Uma Aventura Mística">
@@ -127,33 +94,8 @@
             
         </div>
     </footer>
-<script src="../js/script.js">
-let slideIndex = 1;
-showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-</script>    
+    
+<script src="../js/script.js"> </script>
 </body>
 </html>
