@@ -78,12 +78,14 @@
 /* xxxxxxxxxxxxxxxxxxxxxxxx menu 2 GENEROS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
 .Generos{
+    width: 100%;
     background-color: rgb(129, 126, 126);
-    border: 3px solid rgb(179, 35, 179);
+    border: 3px solid rgb(31, 39, 33);
+    overflow: auto;
 }
 .Generos nav{
+    align-items: center;
     color: aliceblue;
-    float: left;
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -92,9 +94,11 @@
     font-size: 17px;
     border-bottom: 3px solid transparent;
 }
+
 .Generos ul{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin: 10px;
     padding: 10px;
     gap: 10px;
@@ -103,6 +107,7 @@
     margin: 10px;
     padding: 10px;
     background-color: #333;
+    border-radius: 3px;
     list-style-type: none;
     text-decoration: solid white;
     gap: 10px;
@@ -115,17 +120,30 @@
     border-bottom: 8px solid red;
     text-decoration: none;
 }
+.Generos a{
+    text-align: center;
+    width: 25%;
+    font-size: 17px;
+    text-decoration: none;
+    
+}
 
 
-/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx BLOCO-CARDS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
-    #container-filmes {
+    #container-filmes,
+    #container-animes,
+    #container-series {
         display: flex;
         flex-direction: row;
+        gap: 10px;
+        margin: 10px;
     }
 
 
-    .container-filme-img {
+    .container-filme-img,
+    .container-anime-img,
+    .container-series-img {
         margin:10px;
         width: 200px;
         height: 280px;
@@ -133,12 +151,16 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        border: 3px solid black;
+        gap: 10px;
+        margin: 10px;
     }
     
     .container-img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        /* object-fit: contain; */
+        overflow: hidden;
     }
     /* MAIN */
     main{
@@ -153,11 +175,11 @@
         border: 3px solid black;
     }
     .conteudo{
+        display: flex;
+        flex-direction: row;
         padding: 10px;
         width: 100%;
         min-height: 800px;
-        display: flex;
-        flex-direction: row;
         background-color: rgb(58, 57, 57);
     }
     .conteudo1 {
@@ -283,6 +305,38 @@
         animation-name: fade;
         animation-duration: 1.5s;
     }
+
+    /*xxxxxxxxxxxxxxxxxx  BOTÕES  xxxxxxxxxxxxxxxxxxxxxxxx*/
+    .bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .botaodescrip {
+        padding: 15px 32px;
+        margin: 4px 2px;
+        background-color: #ccc;
+        border: 3px solid green;
+        border-radius: 5px;
+        color: rgb(248, 244, 244);
+        text-align: center;
+        text-decoration: none;
+        font-style: bold;
+        display: inline-block;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+    .botaodescrip:hover{
+        box-shadow: greenyellow;
+        background-color: white;
+        color: black;
+    }
+
+
+
+
+
 
     @keyframes fade {
         from {opacity: .4}
