@@ -101,3 +101,778 @@ Seus chats do CONSELHO FEDERAL DE FISIOT E TERAPIA OCUPACIONAL não são usados 
             <button onclick="window.location.href='filmesDescricao.html'">descrição animes </button>
 
         </div> -->
+
+
+        Analisando seu JS e CSS, encontrei 4 erros principais que estão fazendo seu menu falhar ao marcar o item ativo e afetando o visual:
+
+Caminho Duplicado no JS ( ././): No seu array você colocou link: "./home.html", mas forvocê não fez href="./" + menus[index].link. Isso gerou um link quebrado: href="././home.html".
+
+Uso de :activevez em quando de classe .active: No CSS, .menu li:activesignifica "o momento exato em que o usuário clica com o mouse" , e não a página onde ele está navegando.
+
+Seletores CSS que dependem do body id: No final do seu CSS você criou seletores como #Home .Home, #Filmes .Filmes. Para isso funcionar, uma tag <body>de cada arquivo HTML precisaria ter o correspondente id="Home", id="Filmes", etc. Além disso, no JS você gerou class="Descrição"(com ç e til), enquanto no CSS colocou #Descricao .Descricao(sem acento), gerando um desacordo de nomes.
+
+não CSS:
+
+transition: fixed;( fixednão é um valor válido para transição).
+
+color: solid white;( solidnão existe para a cor do texto).
+
+Versão Corrigida 1: Simples no JS + CSS (Sem precisar mudar os HTMLs)
+Esta solução identifica a página aberta automaticamente via JS, adiciona a classe .activee corrige todos os bugs do CSS.
+
+JavaScript Corrigido ( script.js)
+JavaScript
+let menus = [
+    { nome: "Home", link: "./home.html" },
+    { nome: "Filmes", link: "./filmes.html" },
+    { nome: "Animes", link: "./animes.html" },
+    { nome: "Series", link: "./series.html" },
+    { nome: "Descrição", link: "./descricao.html" }
+];
+
+function criarMenu() {
+    let elemento1 = document.getElementById("lista-menu");
+    if (!elemento1) return;
+
+    // Pega o nome da página atual aberta na URL (ex: "home.html")
+    let paginaAtual = window.location.pathname.split("/").pop();
+    
+    // Se estiver na raiz, assume que é home.html
+    if (!paginaAtual) paginaAtual = "home.html";
+
+    let lista = "";
+
+    for (let index = 0; index < menus.length; index++) {
+        let item = menus[index];
+        
+        // Extrai apenas o arquivo do link do array (ex: "home.html")
+        let arquivoLink = item.link.replace("./", "");
+
+        // Verifica se a página atual é a deste link
+        let classeAtiva = (paginaAtual === arquivoLink) ? "active" : "";
+
+        // Corrigido: sem duplicar o "./"
+        lista += `<li><a href="${item.link}" class="${classeAtiva}">${item.nome}</a></li>`;
+    }
+
+    elemento1.innerHTML = lista;
+}
+
+criarMenu();
+Raio-X do seu código atual
+1. O JavaScript (imagem e texto)
+JavaScript
+let menus = [
+    {nome: "Home", link:"./home.html"},
+    {nome: "Filmes", link:"./filmes.html"},
+    {nome: "Animes", link:"./animes.html"},
+    {nome: "Series", link:"./series.html"},
+    {nome: "Descrição", link:"./descricao.html"}
+]
+
+function criarMenu() {
+    let elemento1 = document.getElementById("lista-menu");
+    let lista = "";
+
+    for(index=0; index < menus.length; index = index + 1){
+        lista = lista + `<li><a href="./`+menus[index].link +`"` + `class="` + menus[index].nome + `">`+ menus[index].nome+`</a></li>`;
+    };
+    elemento1.innerHTML = lista;
+}
+criarMenu();
+O que está acontecendo no JS:
+
+Caminho duplicado ( ././): No seu array você colocou link: "./home.html". Dentro do loop você monta href="./" + menus[index].link. Isso resulta em href="././home.html".
+
+Geração de aulas: Você está gerando class="Home", class="Filmes", class="Descrição". Repare no "Descrição" com acento çe ã.
+
+Escopo de variável: for(index=0; ...) sem declarar letou varcriar a variável indexno escopo global.
+
+2. O HTML (imagem do Explorer e Header)
+Na imagem do VS Code vemos a estrutura de pastas:
+
+texto simples
+css/
+  Geral.css
+  Pagina2.css
+  Pagina3.css
+html/
+  animes.html
+  animesDescricao.html
+  descricao.html
+  filmes.html
+  filmesDescricao.html
+  home.html
+  series.html
+  seriesDescricao.html
+  video.html
+js/
+  script.js
+E no seu header:
+
+HTML
+<header>
+  <div class="barra-superior" id="Barra-superior">
+    <div class="logo"><img src="../Img/" alt=""></div>
+    <div class="menu" id="container-menu">
+      <nav>
+        <ul id="lista-menu"></ul>
+      </nav>
+    </div>
+  </div>
+</header>
+3. O CSS (seu envio)
+CSS
+.menu {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    padding: 0px;
+    gap: 10px;
+}
+.menu ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 10px;
+    padding: 10px;
+    align-items: center;
+}
+.menu li {
+    display: flex;
+    color: white;
+    padding: 10px;
+    transition: fixed; /* ❌ 'fixed' não existe no transition */
+}
+.menu li:hover {
+    background-color: black;
+    color: white;
+}
+.menu li a {
+    text-decoration: none;
+    list-style-type: none;
+    color: solid white; /* ❌ 'solid white' não é válido para a cor da fonte */
+}
+.menu li:active {
+    background-color: #333;
+    transform: scale(0.95);
+}
+
+.menu ul,li,a {
+    color: white;
+}
+
+/* Quando estiver na página sobre, pinta o link correspondente */
+#Home .Home,
+#Filmes .Filmes,
+#Animes .Animes,
+#Series .Series,
+#Descricao .Descricao {
+    color: #fff;
+    background-color: #0d0d0e;
+    font-weight: bold;
+}
+🎯 Por que não estava marcando e o visual ficou "fraco"?
+O :activedo CSS: Não é CSS nativo, :activesó se aplica durante o clique do mouse (quando o botão está pressionado). Não sirva para manter a aba marcada depois de mudar de página.
+
+Conflito no seletor #Descricao .Descricao: O JS gerou class="Descrição"(com acento ç/ ã), mas no CSS você escreveu .Descricao(sem acento). Como os nomes não bateram, a regra do CSS não foi aplicada nessa aba.
+
+Dependência do idno <body>: Para que sua regra #Home .Homefuncione no modelo "puro", a tag <body>de sua página home.html precisa obrigatoriamente ter <body id="Home">.
+
+Área clicável vs Espaçamento: O padding: 10pxestava no <li>em vez do <a>. Isso fez com que o fundo escuro aparecesse no <li>, mas o clique só funcionava exatamente em cima das letras do texto.
+
+Me avise por onde você gostaria de dar o próximo passo: quer ajustar a versão que usa o JS automático para colocar a classe .activeou prefere ajeitar a versão 100% HTML + CSS ?
+
+Sim, entendi perfeitamente a estrutura dos seus arquivos, o código e o que pretende alcançar.
+
+Com base na análise que fiz às suas imagens e ao seu texto, aqui está o resumo do seu cenário:
+
+Estrutura de Ficheiros: Dezenas de arquivos HTML agrupados em pasta html/( home.html, filmes.html, animes.html, etc.), o CSS na pasta css/e o JS na pasta js/.
+
+Geração do Menu em JS: O seu script percorre uma lista de objetos menuse injeta as tags <li><a href="...">dinamicamente na <ul>com ID lista-menu.
+
+O Problema Visual e de Funcionamento:
+
+No JS, a interpolação href="./" + menus[index].linkresulta num caminho duplicado ././home.html.
+
+As classes geradas contêm caracteres especiais como em Descrição, ou que não coincidem com o seletor CSS .Descricao.
+
+O estado :activedo CSS aplica-se apenas durante o clique e não mantém a aba destacada após a navegação.
+
+O paddingnão <li>em vez <a>reduz a área clicável do link.
+
+Quando você quiser continuar, diga-me quais das abordagens prefere ajustar (a lógica automática via JavaScript ou a ligação direta em HTML + CSS).
+Analisando seu CSS e seu JS atualizados, notei que você fez ótimas melhorias (como criar a propriedade classesem acentos no JS e corrigir o caminho do href!).
+
+Porém, ainda existem alguns pequenos bugs e uma incompatibilidade entre o CSS e o JS que vão fazer o menu não destacar a aba ativa.
+
+1. Os problemas encontrados
+Sem CSS:
+Erro de digitação no seletor ativo: 
+Você escreveu #Descricao .Descricao.active. O .activecolado no final faz com que a regra procure um elemento que tenha a classe Descricao E a classe activeao mesmo tempo. Como seu JS não gera a classe active, o CSS da "Descrição" falha.
+
+Propriedades CSS inválidas:
+
+transition: fixed;(não existe fixedpara transições, o correto é indicar o tempo, ex: transition: 0.3s;).
+
+color: solid white;( solidnão é um valor de cor válido).
+
+Área de clique pequena: 
+O padding: 10pxe o :hoverestão na <li>e não no <a>. Com isso, ao passar o mouse fica preto, mas o usuário só consegue clicar exatamente no topo das letras do texto.
+
+Sem JavaScript:
+Uso misturado de Template String e Concatenação: 
+Você abriu uma crase `<li><a href="`, usou +para juntar as variáveis ​​e fechou no final. Funciona, mas pode confundir. Dá para deixar a sintaxe 100% limpa com Template String puro ( ${...}).
+
+Declaração de Variável no Loop: 
+O for(index=0; ...)sem letou constcria uma variável global indesejada.
+
+2. A Solução Corrigida
+Seu CSScado:
+CSS
+.menu {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    padding: 0px;
+    gap: 10px;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+/* Transferimos o padding e display para o <a> para que toda a caixa seja clicável */
+.menu li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: white; /* Corrigido de 'solid white' */
+    transition: background-color 0.3s ease; /* Corrigido de 'fixed' */
+}
+
+/* Efeito Hover direto no link */
+.menu li a:hover {
+    background-color: black;
+    color: white;
+}
+
+.menu ul, li, a {
+    color: white;
+}
+
+/* 
+  Para isso funcionar no CSS PURO:
+  Cada arquivo HTML deve ter o ID correspondente na tag <body>.
+  Exemplo em home.html: <body id="Home">
+  Exemplo em descricao.html: <body id="Descricao">
+*/
+#Home .Home,
+#Filmes .Filmes,
+#Animes .Animes,
+#Series .Series,
+#Descricao .Descricao {
+    color: #fff;
+    background-color: #0d0d0e;
+    font-weight: bold;
+}
+Seu JS Ajustado (Sintaxe Limpa):
+JavaScript
+let menus = [
+    {nome: "Home", link: "./home.html", classe: "Home"},
+    {nome: "Filmes", link: "./filmes.html", classe: "Filmes"},
+    {nome: "Animes", link: "./animes.html", classe: "Animes"},
+    {nome: "Series", link: "./series.html", classe: "Series"},
+    {nome: "Descrição", link: "./descricao.html", classe: "Descricao"}
+];
+
+function criarMenu() {
+    let elemento1 = document.getElementById("lista-menu");
+    if (!elemento1) return;
+
+    let lista = "";
+
+    // Usando let no index e Template Strings (${}) para um código limpo
+    for (let index = 0; index < menus.length; index++) {
+        lista += `<li><a href="${menus[index].link}" class="${menus[index].classe}">${menus[index].nome}</a></li>`;
+    }
+    
+    elemento1.innerHTML = lista;
+}
+
+criarMenu();
+⚠️ Ponto de Atenção Crucial para Funcionar:
+Ao optar por usar uma estratégia de CSS #Home .Home, você precisa garantir que a tag#Descricao .Descricao de cada página HTML tenha seu ID correto , por exemplo:<body>
+
+Em home.html→<body id="Home">
+
+Em filmes.html→<body id="Filmes">
+
+Em animes.html→<body id="Animes">
+
+Em series.html→<body id="Series">
+
+Em descricao.html→<body id="Descricao">
+
+Com essas correções no CSS e os IDs nos <body id="...">, seu menu vai marcar a página atual perfeitamente!
+    O problema do seu rodapé estar flutuando por cima do conteúdo acontece por causa de uma propriedade específica: position: fixed.
+
+Quando você usa position: fixed; bottom: 0;, você tira o footerfluxo normal da página e diz para o navegador: "gruda esse elemento no rodapé da tela do usuário e ignore todo o conteúdo que estiver atrás dele" .
+
+Para fazer o rodapé ficar lá embaixo (no final da página), acompanhe a rolagem naturalmente e nunca sobrepor o conteúdo, o padrão da web moderna é usar o Sticky Footer com Flexbox nobody .
+
+Por que seu CSS atual está com problema?
+position: fixedno footer: Tira ele do fluxo do documento e faz ele sobrepor o <main>.
+
+margin-top: 20vhno footer: Não funciona quando o elemento tem position: fixed.
+
+padding-bottom: 50vhno principal: Você tentou empurrar o conteúdo para cima usando metade da altura da tela, mas isso cria um "buraco" vazio gigante e não resolve o problema da sobreposição.
+
+display: blocke flex-direction: columnno footer: flex-direction não tem efeito quando o display é block(só funciona com display: flex).
+
+Conceito: Como estruturar o Sticky Footer (Flexbox)
+A ideia é transformar um bodycontainer Flexbox vertical que ocupa no mínimo 100% da altura da tela ( min-height: 100vh). Depois, fazemos o <main>esticar para ocupar todo o espaço vago ( flex: 1).
+
+Dessa forma:
+
+Se a página tiver pouco conteúdo , a <main>estética e jogue o footerpara a base da tela.
+
+Se a página tiver muito conteúdo , o footerfica no final de tudo após você rolar até o fim, sem sobrepor nada.
+
+O que ajustar no seu CSS (Passo a Passo da Lógica):
+1. Configurar obody
+O bodyprecisa virar o container pai que segura o <header>, o <main>eo <footer>:
+
+CSS
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa no mínimo 100% da altura da tela */
+    margin: 0; /* Remove margens padrão do navegador */
+}
+2. Ajustar omain
+O <main>deve empurrar o rodapé para baixo crescendo o máximo que puder. Limpamos a gambiarra do padding-bottom: 50vh:
+
+CSS
+main {
+    flex: 1; /* Faz o main crescer e ocupar todo o espaço livre da tela */
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(206, 196, 196);
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    /* Removemos o padding-bottom: 50vh e a min-height fixa de 700px */
+}
+3. Corrigir ofooter
+Removemos o position: fixedpara ele voltar a ser um bloco normal:
+
+CSS
+footer {
+    /* REMOVIDO: position: fixed; */
+    /* REMOVIDO: bottom: 0; */
+    /* REMOVIDO: margin-top: 20vh; */
+
+    width: 100%;
+    height: 200px;
+    background-color: rgb(37, 37, 37);
+    border: 3px solid black;
+    color: white;
+    display: flex; /* Mudado de block para flex para aceitar a direção */
+    flex-direction: column;
+}
+Resumo das Mudanças
+Tirou position: fixed: O footerpassa a respeitar o final da página e não cobre mais as imagens/carrossel do seu <main>.
+
+Adicionado min-height: 100vhnão body: Garante que a página sempre ocupe a tela inteira, mesmo que esteja sem conteúdo.
+
+flex: 1no main: Garante o encaixe perfeito sem precisar usar medidas em pxou vhna margem ou sem preenchimento.
+Analisando o bloco de CSS que você inveja, você ainda está com as propriedades antigas no body, e que fazem o rodapé flutuar por cima do conteúdo. mainfooter
+
+Faltam 3 configurações essenciais para que o layout funcione perfeitamente:
+
+O que está travando o layout no seu CSS atual:
+No bodyfalta o Flexbox: Sem o display: flex; flex-direction: column; min-height: 100vh;no body, a regra flex: 1do seu <main>não faz efeito nenhum.
+
+No footerainda tem position: fixed: O position: fixedsoltar o rodapé da página e faz ele boiar na tela por cima das suas imagens e categorias.
+
+Não maino padding-bottom: 50vhcria um buraco gigante: Ele força um espaço em branco equivalente à metade da tela dentro do próprio conteúdo.
+
+Como concordar direto no seu CSS:
+Altere essas 3 regras no seu arquivo para alinhar com o padrão Flexbox:
+
+CSS
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 1. O body vira o container principal que segura tudo */
+body {
+    background-color: rgb(65, 60, 60);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que a página ocupe 100% da altura da tela */
+}
+
+/* 2. O main estica para ocupar o espaço livre e empurrar o footer */
+main {
+    flex: 1; /* Estica e ocupa todo o espaço sobressalente */
+    width: 100%;
+    background-color: rgb(206, 196, 196);
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    /* REMOVIDO: padding-bottom: 50vh (não é mais necessário) */
+    /* REMOVIDO: min-height: 700px (o min-height do body já resolve) */
+}
+
+/* 3. O footer volta a ser um bloco normal no final da fila */
+footer {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(37, 37, 37);
+    border: 3px solid black;
+    color: white;
+    display: flex; /* Alterado de block para flex */
+    flex-direction: column;
+    /* REMOVIDO: position: fixed */
+    /* REMOVIDO: bottom: 0 */
+    /* REMOVIDO: margin-top: 20vh */
+}
+Entendendo o comportamento do novo CSS:
+Se a página tiver POUCO conteúdo: O bodyvai medir a altura da tela ( 100vh), o mainvai esticar até o limite e o footervai ficar cravado lá no roda-pé da tela.
+
+Se a página tiver MUITO conteúdo: O mainvai crescer normalmente com o conteúdo e o footervai ficar logo abaixo do final da rolagem, sem tampar nada!
+blz, agora vamos voltar ao ativo do menu , atualmente ele está marcando assim pois fiz manual só html e css, tem outra forma dele marcar a <li> ao investir de só o <a>? ou preciso realmente fazer java script?
+
+Boa! Dá para resolver isso sem JavaScript , apenas ajustando o CSS.
+
+A imagem dá para ver exatamente o problema: a caixa preta do fundo está apertadinha só na volta da palavra Home , enquanto os outros itens nem possuem espaçamento interno. Isso acontece por dois motivos:
+
+O link <a>é por padrão um elemento inline(ele só ocupa o tamanho do texto exato).
+
+O fundo e a classe de destaque estão sendo aplicados diretamente na tag <a>sem preencher a <li>.
+
+Duas formas de resolver em HTML + CSS puro:
+Opção A: Fazer o <a>ocupar 100% da <li>(A mais recomendada!)
+Ao tentar pintar um <li>, você faz o <a>esticar e preencher todo o espaço interno do <li>. Assim, a caixa preta fica bonita, apesar de quiser, e a área inteira vira clicável (o usuário não precisa clicar exatamente em cima da palavra).
+
+O ajuste no seu CSS:
+
+CSS
+/* 1. A <li> define o tamanho da caixinha do item */
+.menu li {
+    display: flex;
+    align-items: center;
+}
+
+/* 2. O <a> preenche toda a <li> e ganha o padding bonito */
+.menu li a {
+    display: block;
+    padding: 8px 16px; /* Dá espaço interno em volta do texto */
+    text-decoration: none;
+    color: white;
+    border-radius: 4px; /* Opcional: deixa os cantos arredondados */
+    transition: background-color 0.3s;
+}
+
+/* 3. Hover e estado Ativo direto no <a> */
+.menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Marcação da página atual (Seu CSS manual por ID de página) */
+#Home .Home,
+#Filmes .Filmes,
+#Animes .Animes,
+#Series .Series,
+#Descricao .Descricao {
+    color: #ffffff;
+    background-color: #000000; /* Fundo preto preenchendo toda a caixinha */
+    font-weight: bold;
+}
+Opção B: Pintar <li>diretamente usando o CSS:has()
+Se você fizer questão de pintar a tag <li>em vez disso <a>, o CSS moderno tem o seletor :has(). Ele permite dizer: "pinte a que tenha um com a classe da página dentro dela" . <li><a>
+
+Como fica no CSS:
+
+CSS
+/* Seleciona a <li> que CONTÉM o link ativo */
+#Home li:has(.Home),
+#Filmes li:has(.Filmes),
+#Animes li:has(.Animes),
+#Series li:has(.Series),
+#Descricao li:has(.Descricao) {
+    background-color: #000000;
+    font-weight: bold;
+    border-radius: 4px;
+}
+Resumo do que muda:
+Recomendo muito a Opção A. Ela resolve o visual pequeno da caixa preta que aparece na sua imagem e ainda melhora a experiência de uso, pois o clique passa a funcionar em qualquer lugar dentro dos retângulos do item, e não só em cima das letras!
+
+mas conversei com um colega aqui e o melhor vai ser no java script simples mesmo me dá uma luz de como fazer
+
+É uma excelente escolha! Fazer via JavaScript é uma solução mais profissional e escalável: você não precisa colocar IDs manuais em <body id="...">cada página HTML nem duplicar código CSS para cada aba. O próprio JS lê a URL do navegador e marca o item correto dinamicamente.
+
+Para você entender a lógica sem apenas copiar o código imediatamente, o processo é dividido em 3 passos :
+
+Passo 1: O "Detectador" da Página Atual (no JS)
+O navegador possui um objeto nativo chamado window.location. Se você olhar o que tem dentro dele, a propriedade window.location.pathnameentrega o caminho da página onde o usuário está.
+
+Exemplo:
+
+Na URL[http://127.0.0.1:5500/netflix/html/home.html](http://127.0.0.1:5500/netflix/html/home.html)
+
+O window.location.pathnamedevolve toda a rota até o arquivo.
+
+Se usarmos .split("/").pop(), pegamos apenas o nome do arquivo final : . "home.html"
+
+Passo 2: Comparar no seu Loop do for(no JS)
+No seu loop for, a cada volta você tem o link do menu: (que é ). menus[index].link"./home.html"
+
+Você faz uma seleção simples antes de criar uma tag:
+
+Limpa o ./link do array (transforma "./home.html"em "home.html").
+
+Pergunta ao JS: O arquivo que estou abrindo agora é igual ao link deste item do menu? 
+
+Se SIM: crie uma variável de classe como "active".
+
+Se NÃO: crie uma variável de classe vazia "".
+
+Passo 3: O CSS Único
+No CSS, você exclui todas aquelas regras manuais ( #Home .Home, ... ) e cria apenas uma regra chamada . #Filmes .Filmes.active
+
+O Roteiro Visual do Código:
+1. Como fica o CSS (Simples e limpo):
+CSS
+/* Estilo padrão de todos os links */
+.menu li a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ÚNICA regra necessária para marcar a aba ativa */
+.menu li a.active {
+    background-color: #000000; /* Fundo preto preenchendo a caixinha inteira */
+    color: #ffffff;
+    font-weight: bold;
+}
+2. A Lógica no seu JS:
+No seu script, a estrutura do seu loop fica assim (mantendo o padrão atual de concatenação):
+
+JavaScript
+let menus = [
+    {nome: "Home", link: "./home.html"},
+    {nome: "Filmes", link: "./filmes.html"},
+    {nome: "Animes", link: "./animes.html"},
+    {nome: "Series", link: "./series.html"},
+    {nome: "Descrição", link: "./descricao.html"}
+];
+
+function criarMenu() {
+    let elemento1 = document.getElementById("lista-menu");
+    let lista = "";
+
+    // 1. Descobre qual o arquivo HTML atual aberto no navegador
+    let paginaAtual = window.location.pathname.split("/").pop();
+    
+    // Se a pessoa acessar só a raiz da pasta, assume "home.html"
+    if (paginaAtual === "") {
+        paginaAtual = "home.html";
+    }
+
+    for (let index = 0; index < menus.length; index = index + 1) {
+        
+        // 2. Extrai só o nome do arquivo da propriedade link (remove o "./")
+        let arquivoDoMenu = menus[index].link.replace("./", "");
+
+        // 3. Verifica se bate com a página atual para definir a classe 'active'
+        let classeAtiva = "";
+        if (paginaAtual === arquivoDoMenu) {
+            classeAtiva = "active";
+        }
+
+        // 4. Monta a li injetando a classe 'active' no item correspondente
+        lista = lista + '<li><a href="' + menus[index].link + '" class="' + classeAtiva + '">' + menus[index].nome + '</a></li>';
+    }
+
+    elemento1.innerHTML = lista;
+}
+
+criarMenu();
+O que essa mudança resolve:
+Remover a dependência do <body id="...">: Você pode tirar os IDs das tags <body>de todas as suas páginas HTML.
+
+Preenche a caixinha inteira: Como o paddingestá no <a>e a aula .activevai direto nele, a caixa inteira fica marcada de preto igual você queria.
+
+Menu dinâmico real: Se você adicionar 10 páginas novas no array menus, ele vai criar e marcar todas automaticamente sem precisar tocar no CSS!
+h2.generos:alvo{
+
+    borda: 5px sólida rgb(233, 66, 225);
+
+    box-shadow: rgb(230, 223, 231);
+
+    cor: verde;
+
+}
+
+ <h2 class="genero" id="Acao">AÇÃO</h2>
+
+to tentando chamar o target pra essa funcionalidade do menu de generos e não ta dando muito certo onde estou errando aqui
+
+Você está cometendo dois erros de sintaxe e nomenclatura em seu CSS que estão impedindo o estilo de ser aplicado:
+
+1. Nomenclatura da Classe ( .generosvs .genero)
+No seu HTML a classe não está no singular: . class="genero"
+
+No seu CSS você colocou no plural com um ponto no lugar errado: . Como os nomes não batem, o CSS ignora o elemento. h2.generos:target
+
+2. Sintaxe Invalida nobox-shadow
+A propriedade box-shadowprecisa de pelo menos a posição horizontal, vertical e o desfoque antes da cor.
+
+Escrever apenas box-shadow: rgb(230, 223, 231);é uma sintaxe inválida e o navegador descartado essa regra.
+
+Como corrigir o seu CSS:
+CSS
+/* Corrigido: 'genero' no singular e sintaxe do box-shadow com posições */
+h2.genero:target {
+    border: 5px solid rgb(233, 66, 225);
+    box-shadow: 0px 0px 15px rgb(230, 223, 231); /* Adicionado os valores de posição e brilho */
+    color: green;
+}
+⚠️ Requisito obrigatório para :targetfuncionar no HTML:
+Para que a pseudoclasse :targetseja ativada na tela, a URL do navegador precisa ter o hash do ID do elemento no final.
+
+Ou seja:
+
+O link no seu menu precisa ser: <a href="#Acao">Ação</a>
+
+Ao clicar no link, a URL vai mudar para algo como.../filmes.html#Acao
+
+Somente quando o #Acaoestiver presente na URL é que o elemento <h2 class="genero" id="Acao">receberá o destaque do :target!
+
+poderia me ajudar a criar os padrões de cores pro meu site??
+
+Com certeza! Como você está criando um site no estilo streaming / entretenimento (inspirado na Netflix, com animes, filmes e séries), a paleta de cores precisa transmitir híbrida, contraste e destaque visual .
+
+Para um tema escuro (Dark Mode) de streaming, a regra recomendada é trabalhar com 4 a 5 núcleos principais :
+
+🎨 Paleta de Cores Recomendada (Estilo Streaming)
+1. Fundo Principal (Base de Fundo)
+Cor: Preto Suave / Grafite Escuro
+
+Hexadecimal: (ou ) #141414rgb(20, 20, 20)
+
+Onde usar: No body, fundo da página inteira.
+
+Por que usar: O preto puro ( #000000) pode cansar a vista; um grafite bem escuro deixa o site moderno e confortável para leitura.
+
+2. Containers e Cartões (Background Secundário)
+Cor: Cinza Escuro
+
+Hex: ou #1f1f1f#2b2b2b
+
+Onde usar: Fundo da barra superior ( .barra-superior), rodapé ( footer), cards de filmes/animes e caixas de busca.
+
+Por que usar: Cria camadas visuais sem precisar de bordas grossas.
+
+3. Cor de Destaque / Ação
+Cor: Vermelho Vivo (ou Magenta Neon)
+
+Hex: (Vermelho Netflix) ou (O magenta que você usou no seu ! ) #E50914#E942E1:target
+
+Onde usar: Botões de ação (Play, Assinar), item de menu ativo ( .active), bordas de foco ( :target), barra de progresso.
+
+Por que usar: Chame a atenção imediata do usuário para onde ele deve clicar ou olhar.
+
+4. Texto Principal
+Cor: Branco Suave
+
+Hexadecimal: (ou ) #F5F5F5rgb(245, 245, 245)
+
+Onde usar: Títulos <h1>, , textos do menu, jurídicos. <h2>
+
+Por que usar: Garante contraste máximo sobre o fundo escuro.
+
+5. Texto Secundário / Detalhes Raciocinados
+Cor: Cinzana / Prata
+
+Hex: ou #AAAAAA#8C8C8C
+
+Onde usar: Categorias secundárias, datas de lançamento, tempo de duração, ícones inativos.
+
+🛠️ Como Organizar Isso no Seu CSS Usando Variáveis ​​( :root)
+Em vez de ficar decorando códigos hex ou rgb(), o ideal no CSS moderno é criar Variáveis ​​CSS . Assim, se um dia você quiser mudar o vermelho para azul, mude em um único lugar!
+
+Exemplo no seu arquivo Geral.css:
+CSS
+/* 1. Declaração das Cores Padrões */
+:root {
+    --bg-principal: #141414;
+    --bg-secundario: #1f1f1f;
+    --cor-destaque: #e50914;      /* Pode trocar por #e942e1 se preferir o magenta */
+    --texto-principal: #ffffff;
+    --texto-secundario: #aaaaaa;
+    --borda-suave: #333333;
+}
+
+/* 2. Aplicação no Body */
+body {
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* 3. Aplicação na Barra Superior / Header */
+.barra-superior {
+    background-color: var(--bg-secundario);
+    border-bottom: 1px solid var(--borda-suave);
+}
+
+/* 4. Menu Ativo e Hover */
+.menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--texto-principal);
+}
+
+.menu li a.active {
+    background-color: var(--cor-destaque);
+    color: var(--texto-principal);
+    font-weight: bold;
+}
+
+/* 5. Seu :target do gênero com as variáveis */
+h2.genero:target {
+    border: 4px solid var(--cor-destaque);
+    box-shadow: 0px 0px 15px var(--cor-destaque);
+    color: var(--texto-principal);
+}
+
+/* 6. Footer */
+footer {
+    background-color: var(--bg-secundario);
+    border-top: 1px solid var(--borda-suave);
+    color: var(--texto-secundario);
+}
+Qual estilo visual de cores te agrada mais: esse tom Cinza Escuro + Vermelho Netflix ou prefere puxado para o Preto + Magenta/Roxo Neon (estilo Gamer/Anime)?
