@@ -1,27 +1,38 @@
 
 
 /*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx criar menu xxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
-
+//APRENDIDO PELO GEMINI//
 let menus = [
-    {nome: "Home", link:"./home.html"},
-    {nome: "Filmes", link:"./filmes.html"},
-    {nome: "Animes", link:"./animes.html"},
-    {nome: "Series", link:"./series.html"},
-    {nome: "Descrição", link:"./descricao.html"}
+    {nome: "Home", link:"./home.html", classe:"Home"},
+    {nome: "Filmes", link:"./filmes.html", classe:"Filmes"},
+    {nome: "Animes", link:"./animes.html", classe:"Animes"},
+    {nome: "Series", link:"./series.html", classe:"Series"},
+    {nome: "Descrição", link:"./descricao.html", classe:"Descricao"}
 ]
 
 function criarMenu() {
 
     let elemento1 = document.getElementById("lista-menu");
-
     let lista =  "";
 
-    for(index=0; index < menus.length; index = index + 1){
+    let marcadorPagina = window.location.pathname.split("/").pop();// 1. Descobre qual o arquivo HTML atual aberto no navegador//
+    // Se a pessoa acessar só a raiz da pasta, assume "home.html"
+    if(marcadorPagina === ""){
+        marcadorPagina = "home.html";
+    }
 
-       lista = lista +   `<li><a href="./`+menus[index].link +`"` + `class="` + menus[index].nome + `">`+ menus[index].nome+`</a></li>`;
+    for(let index = 0; index < menus.length; index = index + 1){
+        
+        let arquivoDoMenu = menus[index].link.replace("./", "");// 2. Extrai só o nome do arquivo da propriedade link (remove o "./")
+
+        let classeAtiva = "";// 3. Verifica se bate com a página atual para definir a classe 'active'
+        if(marcadorPagina === arquivoDoMenu){
+            classeAtiva = "active";
+        }
+       lista = lista +   `<li><a href="`+menus[index].link +`"` + `class="` + classeAtiva + `">`+ menus[index].nome+`</a></li>`;// 4. Monta a li injetando a classe 'active' no item correspondente//
 
     };
-    elemento1.innerHTML =lista;
+    elemento1.innerHTML = lista;
    
 }
 criarMenu();
@@ -35,7 +46,7 @@ let menuGenero = [
     {genero:"Ficção Cientifica", link:'href="#Ficcao-Cientifica"'},
     {genero:"Terror/Horror", link:'href="#Terror-Horror"'},
     {genero:"Suspense", link:'href="#Suspense"'},
-    {genero:"Romance", link:'href=""'}
+    {genero:"Romance", link:'href="#Romance"'}
 ]
 
 function criarMenuGenero() {
@@ -46,7 +57,7 @@ function criarMenuGenero() {
 
     for(index=0; index < menuGenero.length; index = index + 1){
 
-       lista2 = lista2 +   `<li class= "active"><a href="./`+ menuGenero[index].link +`">`+ menuGenero[index].genero + `</a></li>`;
+       lista2 = lista2 +   `<li class= "active"><a `+ menuGenero[index].link +`>`+ menuGenero[index].genero + `</a></li>`;
 
     };
     if(elemento2!==null){
@@ -55,6 +66,8 @@ function criarMenuGenero() {
    
 }
 criarMenuGenero();
+
+
 
 /////// CARROCEL DE TUMBS DA PAGINA INICIAL /////////
 
