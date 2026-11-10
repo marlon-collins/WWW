@@ -18,7 +18,7 @@ function criarMenu() {
 
     for(index=0; index < menus.length; index = index + 1){
 
-       lista = lista +   `<li><a href="./`+menus[index].link+`">`+menus[index].nome+`</a></li>`;
+       lista = lista +   `<li><a href="./`+menus[index].link +`"` + `class="` + menus[index].nome + `">`+ menus[index].nome+`</a></li>`;
 
     };
     elemento1.innerHTML =lista;

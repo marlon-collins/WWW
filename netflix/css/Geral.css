@@ -60,6 +60,7 @@
         display: flex;
         color: white;
         padding: 10px;
+        transition: fixed;
     }
     .menu li:hover{
         background-color: black;
@@ -70,9 +71,24 @@
         list-style-type: none;
         color: solid white;
     }
+    .menu li:active {
+        background-color: #333;
+        transform: scale(0.95);
+    }
 
     .menu ul,li,a{
         color: white;
+    }
+
+        /* Quando estiver na página sobre, pinta o link correspondente */
+    #Home .Home,
+    #Filmes .Filmes,
+    #Animes .Animes,
+    #Series .Series,
+    #Descricao .Descricao{
+    color: #fff;
+    background-color: #0d0d0e;
+    font-weight: bold;
     }
 
 /* xxxxxxxxxxxxxxxxxxxxxxxx menu 2 GENEROS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
