@@ -1,7 +1,7 @@
 
 
 /*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx criar menu xxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
-//APRENDIDO PELO GEMINI//
+// Correções de identação e adição do active no menu principal //
 let menus = [
     {nome: "Home", link:"./home.html", classe:"Home"},
     {nome: "Filmes", link:"./filmes.html", classe:"Filmes"},
@@ -15,21 +15,21 @@ function criarMenu() {
     let elemento1 = document.getElementById("lista-menu");
     let lista =  "";
 
-    let marcadorPagina = window.location.pathname.split("/").pop();// 1. Descobre qual o arquivo HTML atual aberto no navegador//
-    // Se a pessoa acessar só a raiz da pasta, assume "home.html"
+    let marcadorPagina = window.location.pathname.split("/").pop();// 1. Descobre qual o arquivo HTML atual está aberto no navegador- Tradução(na janela do navegador, localiza pra mim , uma parte d URL e divide em pedaços sempre que encontrar ( aqui definimos o parametro pois slipt é um metodo "/", "") e me retorna o ultimo elemento dessa lista pois do split transforma em array e o pop (metodo de array) pega o ultimo//
+                                                                    // 2.Se a pessoa acessar só a raiz da pasta, assume  que está em "home.html" TRADUÇÃO - se o que você buscou na janela o ultimo elemento for vazio a variavel marcador Pagina recebe home.html//
     if(marcadorPagina === ""){
         marcadorPagina = "home.html";
     }
 
     for(let index = 0; index < menus.length; index = index + 1){
         
-        let arquivoDoMenu = menus[index].link.replace("./", "");// 2. Extrai só o nome do arquivo da propriedade link (remove o "./")
+        let caminhoDoMenu = menus[index].link.replace("./", "");// 3. Extrai só o nome do arquivo da propriedade link (remove o "./")TRADUÇÃO- NESSA PARTE o replace(troca o que está aqui dentro pelo que você definir),dito isso nessa parte o replace pega o link e vai mudando de acordo com a sequencia do loop//
 
-        let classeAtiva = "";// 3. Verifica se bate com a página atual para definir a classe 'active'
-        if(marcadorPagina === arquivoDoMenu){
+        let classeAtiva = "";                                   // 4. Verifica se bate com a página atual para definir a classe 'active'
+        if(marcadorPagina === caminhoDoMenu){                   // 5. nesses  2 casos marcadorPagina e caminhoDoMenu estão contendo link e aqui vamos compara-los e o que sair deles ganhará a classe active//
             classeAtiva = "active";
         }
-       lista = lista +   `<li><a href="`+menus[index].link +`"` + `class="` + classeAtiva + `">`+ menus[index].nome+`</a></li>`;// 4. Monta a li injetando a classe 'active' no item correspondente//
+       lista = lista +   `<li><a href="`+menus[index].link +`"` + `class="` + classeAtiva + `">`+ menus[index].nome+`</a></li>`;// 6. Monta as <li> conforme o array de menus depois de ter passado pelo processamento de links aqui é a parte final //
 
     };
     elemento1.innerHTML = lista;
@@ -69,11 +69,11 @@ criarMenuGenero();
 
 
 
-/////// CARROCEL DE TUMBS DA PAGINA INICIAL /////////
+/////// CARROCEL DE TUMBS DA PAGINA INICIAL w3schools /////////
 
 
 let slideIndex = 1;
-showSlides(slideIndex);
+showSlides(1);
 
 // passagem das paginas
 function plusSlides(n) {
@@ -124,7 +124,7 @@ function chamaFilme() {
 
     for(index =0;index < filmes.length; index ++) {    
         
-        listafilmes += `<div class="container-filme-img">  <a href="`+filmes[index].link_pagina + `">   <img alt="`+filmes[index].nome+`" title="`+filmes[index].nome+`" src="`+filmes[index].link_img+ `" class="container-img" /></a></div>`;
+        listafilmes += `<div class="container-cards">  <a href="`+filmes[index].link_pagina + `">   <img alt="`+filmes[index].nome+`" title="`+filmes[index].nome+`" src="`+filmes[index].link_img+ `" class="container-img" /></a></div>`;
     }
     if(elemento4 !== null) {
         elemento4.innerHTML = listafilmes
@@ -335,7 +335,7 @@ function chamaDescricaoSeries() {
     for(let i = 0; i < Seriados.length; i++){
         text5 += 
         '<div class="card-description"' + 'id="' + Seriados[i].Id + '">' +
-            '<div class="capa-seriado" id="' + Seriados[i].Id + '"><img src="../Img/' + Seriados[i].Capa + '" alt="' + Seriados[i].Titulo + '" title="' + Seriados[i].Id + '"></div>' +
+            '<div class="capa-seriado" id="' + Seriados[i].Id + '"><img src="../Img/series/' + Seriados[i].Capa + '" alt="' + Seriados[i].Titulo + '" title="' + Seriados[i].Id + '"></div>' +
             '<div class="description">' +
                 '<ul>' +
                     '<li><span>Titulo: </span>' + Seriados[i].Titulo + '</li>' +
@@ -495,7 +495,7 @@ function chamaDescricaoAnimes() {
     for(let i = 0; i < lAnime.length; i++){
         text6 += 
         '<div class="card-description"' + 'id="' + lAnime[i].Id + '">' +
-            '<div class="capa-anime" id="' + lAnime[i].Id + '"><img src="../Img/' + lAnime[i].Capa + '" alt="' + lAnime[i].Titulo + '" title="' + lAnime[i].Id + '"></div>' +
+            '<div class="capa-anime" id="' + lAnime[i].Id + '"><img src="../Img/animes/' + lAnime[i].Capa + '" alt="' + lAnime[i].Titulo + '" title="' + lAnime[i].Id + '"></div>' +
             '<div class="description">' +
                 '<ul>' +
                     '<li><span>Titulo: </span>' + lAnime[i].Titulo + '</li>' +

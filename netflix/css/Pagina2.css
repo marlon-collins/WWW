@@ -16,7 +16,7 @@
         box-sizing: border-box;
         width:100%;
         min-height: 700px;
-        background-color: rgb(206, 196, 196);
+        background-color: var(--bg-container);
         display: flex;
         flex-direction: column;
         border: 3px solid black;
@@ -32,25 +32,25 @@
         text-align: center;
         align-items: center;
     }
-    .container-cards{
+     div #container-filmes{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-around;
         background-color: var(--bg-container);
         border: 1px solid var(--borda-suave);
         padding: 20px;
         border-radius: 8px;
-        display: flex;
-        flex-direction: row;
-        justify-content:space-around;
         align-items: center;
-        min-width: 960px;
+        width: 100%;
         height: auto;
         margin: 10px;
         gap: 10px;
     }
-    .container-cards div{
-        background-color: var(--bg-principal);
+    div .container-cards{
+        background-color: var(--bg-container);
         border: 1px solid var(--borda-suave);
-        width: 300px;
-        height: 300px;
+        width: 180px;
+        height: auto;
         color: rgb(14, 13, 13);
         border: 3px solid rgb(8, 8, 8);
         border-radius: 5px;
@@ -67,4 +67,34 @@
     .container-cards:hover{
         transform: scale(1.05);
         border-color: var(--cor-destaque);
+    }
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx BLOCO-CARDS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+
+    
+    #container-animes,
+    #container-series {
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        white-space: nowrap;
+        gap: 10px;
+        margin: 10px;
+    }
+
+
+    /* div .container-filme-img, */
+    div .container-anime-img,
+    div .container-series-img {
+        width: 180px;
+        height: 200px;
+        overflow: hidden;
+        object-fit: contain;
+        border: 3px solid var(--borda-suave);
+        background-color: red;
+    }
+    
+    div .container-anime-img img,
+    div .container-series-img img {
+        width: 100%;
+        height: auto;
     }

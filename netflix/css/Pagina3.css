@@ -16,14 +16,16 @@
             box-sizing: border-box;
             width:100%;
             min-height: 700px;
-            background-color: rgb(206, 196, 196);
+            background-color:var(--bg-principal);
             display: flex;
             flex-direction: column;
             border: 3px solid black;
             align-items: center;
             gap: 10px;
         }
-        #Filme-Descricao{
+        #Filme-Descricao,
+        #Serie-Descricao,
+        #Anime-Descricao{
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
@@ -45,21 +47,26 @@
         }
 
         
-        .capa-filme{
-            width: 445px;
+        .capa-filme,
+        .capa-anime,
+        .capa-seriado {
+            width: 450px;
             height: auto;
             display: flex;
-            background-color: rgb(238, 230, 232);
+            background-color: rgb(13, 21, 126);
             border: 3px solid rgb(5, 8, 14);
-            /* overflow: hidden; */
+            overflow: hidden;
+            object-fit: contain;
             
         }
-        .capa-filme img{
+        .capa-filme img,
+        .capa-anime img,
+        .capa-seriado img{
             width: 100%;
             height: auto;
         }
         .description{
-            width: 330px;
+            width: 380px;
             height: auto;
             background-color:blanchedalmond ;
             border: 3px solid rgb(36, 35, 35);

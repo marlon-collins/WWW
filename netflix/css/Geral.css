@@ -29,7 +29,7 @@
     }
 
     header{
-        background-color: rgb(77, 75, 75);
+        background-color: var(--bg-container);
     }
 
     
@@ -141,14 +141,13 @@
     text-decoration: solid white;
     gap: 10px;
 }
-.Generos li a:hover{
-    border-bottom: 5px solid red;
+.Generos li:hover{
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 8px var(--cor-destaque-hover);
 }
 
-.Generos a.active{
-    border-bottom: 8px solid red;
-    text-decoration: none;
-}
+
 .Generos a{
     text-align: center;
     width: 25%;
@@ -167,45 +166,12 @@ h2.genero:target {
 }
 
 
-/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx BLOCO-CARDS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
-
-    #container-filmes,
-    #container-animes,
-    #container-series {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        margin: 10px;
-    }
-
-
-    .container-filme-img,
-    .container-anime-img,
-    .container-series-img {
-        margin:10px;
-        width: 200px;
-        height: 280px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        border: 3px solid black;
-        gap: 10px;
-        margin: 10px;
-    }
-    
-    .container-img {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
     /* xxxxxxxxxxxxxxxxxxxxxxxxxx  MAIN  xxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
     main{
         flex: 1;
         box-sizing: border-box;
         width:100%;
-        background-color: var(--bg-principal);
+        background-color: var(--bg-container);
         display: flex;
         flex-direction: column;
         border: 3px solid black;
@@ -216,7 +182,7 @@ h2.genero:target {
         padding: 10px;
         width: 100%;
         min-height: 800px;
-        background-color: rgb(58, 57, 57);
+        background-color: var(--bg-container);
     }
     .conteudo1 {
         display: flex;
@@ -225,6 +191,9 @@ h2.genero:target {
         justify-content: center;
         margin-top: 20px;
     }
+
+
+
 /*xxxxxxxxxxxxxxxxxxxxx banners xxxxxxxxxxxxxxxxxxxxx*/
     #Banner {
         width: 100%;
@@ -242,26 +211,46 @@ h2.genero:target {
         padding: 10px;
     }
 
-    .Bloco-scroll {
+
+  /*xxxxxxxxxxxxx  BLOCOS DOS GENEROS COM FILMES   xxxxxxxxxxxxxxxxxxxx*/
+
+
+    div .Bloco-scroll {
+        display: flex;
+        flex-direction: row;        
         width: 100%;
+        height: auto;
         background-color: #333;
         overflow: auto;
         white-space: nowrap;
+        padding: 10px;       
         padding: 10px;
-    }
-
-    .Bloco-scroll img {
+        border: var(--borda-suave);
+    }    
+    div .container-filme-img{
         width: 200px;
-        height: auto;
-        border-radius: 7px;
-        padding: 10px;
+        height: auto;        
+        border: 4px var(--borda-suave);
+        border-radius: 5px var(--borda-suave);
+        overflow: hidden;
+        object-fit: contain;       
+        margin: 5px;
+        gap: 10px;
+        transition: transform 0.2s ease;        
     }
-
-    .Bloco-scroll img:hover {
+    .container-filme-img img {        
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .container-filme-img:hover {
         transform: scale(1.05);
         transition: transform 0.3s ease;
-        box-shadow: 0 4px 8px rgba(240, 89, 19, 0.541);
+        box-shadow: 0 4px 8px var(--cor-destaque-hover);
     }
+
+
+    /* xxxxxxxxxxxxxxx  container dos slides de imagem   xxxxxxxxxxxx*/
     .slideshow-container {
         max-width: 100%;
         position: relative;
@@ -370,7 +359,7 @@ h2.genero:target {
 
 
 
-    /* FOOTER */
+    /*xxxxxxxxxxxxxxx   FOOTER    xxxxxxxxxxxxxxxx */
     footer {
         width: 100%;
         height: 200px;
