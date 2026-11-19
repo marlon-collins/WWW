@@ -81,20 +81,35 @@
         margin: 10px;
     }
 
-
-    /* div .container-filme-img, */
+/* PADRONIZAÇÃO DOS CARDS DE FILMES, ANIMES E SÉRIES */
+    div .container-cards,
     div .container-anime-img,
     div .container-series-img {
         width: 180px;
-        height: 200px;
-        overflow: hidden;
-        object-fit: contain;
-        border: 3px solid var(--borda-suave);
-        background-color: red;
+        height: 270px; 
+        border: 2px solid var(--borda-suave);
+        border-radius: 6px;
+        overflow: hidden; 
+        background-color: var(--bg-container);
+        margin: 5px;
+        flex-shrink: 1; 
+        transition: transform 0.2s ease, box-shadow 0.3s ease;        
     }
-    
-    div .container-anime-img img,
-    div .container-series-img img {
+
+    .container-cards img,
+    .container-anime-img img,
+    .container-series-img img {        
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover; 
+        display: block;
+    }
+
+    /* EFEITO HOVER UNIFICADO */
+    .container-cards:hover,
+    .container-anime-img:hover,
+    .container-series-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px var(--cor-destaque-hover);
+        border-color: var(--cor-destaque);
     }

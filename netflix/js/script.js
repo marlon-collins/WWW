@@ -544,3 +544,19 @@ function chamaAnime() {
     }
 }
 chamaAnime();
+
+//xxxxxxxxxxxxxxxxxxxx  TESTE BOTÕES  xxxxxxxxxxxxxxxxx//
+
+let paginaAtual = window.location.href;
+
+let btnAnime = document.getElementById("btn-anime");
+let btnSerie = document.getElementById("btn-serie");
+let btnFilme = document.getElementById("btn-filme");
+
+if (btnAnime && paginaAtual.includes("animesDescricao.html")) {
+    btnAnime.classList.add("active");
+} else if (btnSerie && paginaAtual.includes("seriesDescricao.html")) {
+    btnSerie.classList.add("active");
+} else if (btnFilme && paginaAtual.includes("filmesDescricao.html")) {
+    btnFilme.classList.add("active");
+};   

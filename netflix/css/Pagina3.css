@@ -88,3 +88,33 @@
             padding: 10px;          
         }
 
+        /*xxxxxxxxx  BOTOES NAVEGAÇÃO  xxxxxxxxx*/
+        .botaodescrip {
+            padding: 12px 28px;
+            margin: 4px;
+            background-color: var(--bg-principal);
+            border: 2px solid var(--borda-suave);
+            border-radius: 5px;
+            color: var(--texto-principal);
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.75;
+            transition: background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease, transform 0.2s ease;
+        }
+
+        /* Passar o mouse nos botões inativos */
+        .botaodescrip:hover:not(.active) {
+            background-color: var(--cor-destaque-hover);
+            border-color: var(--texto-principal);
+            opacity: 1;
+        }
+
+        /* Botão ativo (página/seção selecionada pelo JS) */
+        .botaodescrip.active {
+            background-color: var(--cor-destaque);
+            border-color: var(--texto-principal);
+            color: #ffffff;
+            opacity: 1;
+            box-shadow: 0 0 12px var(--sombra-target);
+            transform: translateY(-1px);
+        }
